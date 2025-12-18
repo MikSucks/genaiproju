@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Twitch Translator Overlay</title>
+</head>
+<body>
+    <div id="text-box">
+        <p id="translation"></p>
+    </div>
+
+    <script>
+        const translationBox = document.getElementById("translation");
+
+        async function fetchUpdate() {
+            try {
+                const response = await fetch("/latest");
+                const data = await response.json();
+
+                if (data.text) {
+                    translationBox.textContent = data.text;
+                    translationBox.style.opacity = 1;
+
+                    setTimeout(() => {
+                        translationBox.style.opacity = 0;
+                    }, 3000);
+                }
+            } catch (e) {
+                console.error("Error fetching translation:", e);
+            }
+        }
+
+        setInterval(fetchUpdate, 500);
+    </script>
+</body>
+</html>
