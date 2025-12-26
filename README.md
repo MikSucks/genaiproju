@@ -27,6 +27,6 @@ venv\Scripts\activate
 python twitch_overlay_simple.py
 
 OBS:ssä
-arr browser source ja tämä sinne sitten pälpätys näkyy
+add browser source ja tämä sinne sitten pälpätys näkyy
 http://127.0.0.1:5000
 
